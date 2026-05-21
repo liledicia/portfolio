@@ -1,29 +1,20 @@
-export type BranchId =
-  | "about"
-  | "experience"
-  | "projects"
-  | "skills"
-  | "languages"
-  | "travel"
-  | "volunteer";
+export type BranchId = "about" | "experience" | "projects" | "skills";
 
 export interface Branch {
   id: BranchId;
   labelEn: string;
   labelZh: string;
   icon: string;
-  angle: number; // degrees, 0 = right, -90 = top, clockwise +
-  color: string; // accent color for this branch
+  angle: number; // degrees, 0 = right, -90 = top
+  color: string;
 }
 
-// 7 branches distributed around the center. Start at top (-90°), 360/7 ≈ 51.43°
-// Reorder so heavy/important sections take prominent positions.
+// 4 main branches, evenly distributed. 360/4 = 90°, starting at -135° (top-left).
+// Order chosen so the most "impressive" content (experience, projects) lands on the right side
+// where the eye lands first after avatar.
 export const BRANCHES: Branch[] = [
-  { id: "about",      labelEn: "About",      labelZh: "关于我",     icon: "✦", angle: -90,   color: "#0ea5e9" },
-  { id: "experience", labelEn: "Experience", labelZh: "经历",       icon: "◆", angle: -38.57, color: "#0284c7" },
-  { id: "projects",   labelEn: "Projects",   labelZh: "作品",       icon: "▲", angle: 12.86,  color: "#38bdf8" },
-  { id: "skills",     labelEn: "Skills",     labelZh: "技能",       icon: "●", angle: 64.29,  color: "#7dd3fc" },
-  { id: "languages",  labelEn: "Languages",  labelZh: "语言",       icon: "✿", angle: 115.71, color: "#0ea5e9" },
-  { id: "travel",     labelEn: "Travel",     labelZh: "旅行",       icon: "✈", angle: 167.14, color: "#0284c7" },
-  { id: "volunteer",  labelEn: "Volunteer",  labelZh: "志愿者",     icon: "♥", angle: -141.43, color: "#38bdf8" },
+  { id: "about",      labelEn: "About",      labelZh: "关于我", icon: "✦", angle: -135, color: "#0ea5e9" },
+  { id: "experience", labelEn: "Experience", labelZh: "实习经历", icon: "◆", angle: -45,  color: "#0284c7" },
+  { id: "projects",   labelEn: "Projects",   labelZh: "项目",   icon: "▲", angle: 45,   color: "#38bdf8" },
+  { id: "skills",     labelEn: "Skills",     labelZh: "技能",   icon: "●", angle: 135,  color: "#7dd3fc" },
 ];

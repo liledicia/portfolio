@@ -6,7 +6,44 @@ export const profile = {
   alias: "Lédicia",
   taglineEn: "CS @ Columbia · Technology, Product, etc.",
   taglineZh: "Columbia 计算机 · 技术、产品、其他",
+  email: "liledicia@gmail.com",
+  phone: "+1 574-301-2457",
+  github: "https://github.com/liledicia",
 };
+
+export interface EducationItem {
+  schoolEn: string;
+  schoolZh: string;
+  degreeEn: string;
+  degreeZh: string;
+  period: string;
+  location: string;
+  noteEn?: string;
+  noteZh?: string;
+}
+
+export const education: EducationItem[] = [
+  {
+    schoolEn: "Barnard College, Columbia University",
+    schoolZh: "哥伦比亚大学 Barnard College",
+    degreeEn: "B.A. in Computer Science",
+    degreeZh: "计算机科学 学士",
+    period: "Expected Dec 2027",
+    location: "New York, NY",
+    noteEn: "Current — coursework in algorithms, systems, software engineering.",
+    noteZh: "在读 — 算法、系统、软件工程方向。",
+  },
+  {
+    schoolEn: "Purdue University",
+    schoolZh: "普渡大学",
+    degreeEn: "Aeronautics and Astronautics Engineering",
+    degreeZh: "航空航天工程",
+    period: "Aug 2024 – May 2025",
+    location: "West Lafayette, IN",
+    noteEn: "Transferred to Columbia for CS.",
+    noteZh: "后转入 Columbia 攻读 CS。",
+  },
+];
 
 export const about = {
   en: `I'm Chengxi Li, and you can also call me Lédicia. I'm a CS student at Barnard @ Columbia who likes building things, learning languages, and seeing the world from different perspectives.

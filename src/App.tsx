@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { LangProvider } from "./i18n/context";
 import { LangToggle } from "./components/LangToggle";
-import { RadialTree } from "./components/RadialTree";
-import { MobileAccordion } from "./components/MobileAccordion";
+import { Desktop } from "./components/Desktop";
+import { Mobile } from "./components/Mobile";
 
 function useIsMobile(breakpoint = 768) {
   const [isMobile, setIsMobile] = useState(
@@ -23,11 +23,7 @@ function App() {
     <LangProvider>
       <div className="relative min-h-screen z-10">
         <LangToggle />
-        {isMobile ? <MobileAccordion /> : <RadialTree />}
-
-        <div className="absolute bottom-2 right-4 text-[10px] text-sky-600/40 z-10 pointer-events-none">
-          Chengxi Li · 2026
-        </div>
+        {isMobile ? <Mobile /> : <Desktop />}
       </div>
     </LangProvider>
   );
