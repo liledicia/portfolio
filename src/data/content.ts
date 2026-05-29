@@ -1,351 +1,453 @@
-// All bilingual content for the portfolio sections.
-
 export const profile = {
-  nameEn: "Chengxi Li",
-  nameZh: "李成蹊",
-  alias: "Lédicia",
-  taglineEn: "CS @ Columbia · Technology, Product, etc.",
-  taglineZh: "Columbia 计算机 · 技术、产品、其他",
+  name: "Chengxi Li",
+  externalName: "Lédicia",
+  title: "AI Product & Growth Builder",
+  education: "Computer Science student at Barnard College, Columbia University",
   email: "liledicia@gmail.com",
-  phone: "+1 574-301-2457",
+  emails: [
+    "liledicia@gmail.com",
+    "cl4830@barnard.edu",
+    "19803861212@163.com",
+  ],
+  phoneUS: "+1 574-301-2457",
+  phoneChina: "+86 198-0386-1212",
+  phones: [
+    { label: "US", display: "574-301-2457", href: "tel:+15743012457" },
+    { label: "CN", display: "19803861212", href: "tel:+8619803861212" },
+  ],
   github: "https://github.com/liledicia",
+  resumeUrl: "/assets/chengxi-li-resume.pdf",
+  resumes: [
+    { label: "Chinese Version", href: "" },
+    { label: "English Version", href: "" },
+  ],
+  location: "New York, NY",
 };
+
+export const navigation = [
+  { label: "Home", href: "#home" },
+  { label: "Education", href: "#education" },
+  { label: "Projects", href: "#projects" },
+  { label: "Research", href: "#research" },
+  { label: "Experience", href: "#experience" },
+  { label: "Skills", href: "#skills" },
+  { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
+];
 
 export interface EducationItem {
-  schoolEn: string;
-  schoolZh: string;
-  degreeEn: string;
-  degreeZh: string;
+  school: string;
+  degree: string;
   period: string;
   location: string;
-  noteEn?: string;
-  noteZh?: string;
+  website: string;
+  logo: string;
+  logoAlt: string;
+  highlights: string[];
 }
 
-export const education: EducationItem[] = [
+export const educationItems: EducationItem[] = [
   {
-    schoolEn: "Barnard College, Columbia University",
-    schoolZh: "哥伦比亚大学 Barnard College",
-    degreeEn: "B.A. in Computer Science",
-    degreeZh: "计算机科学 学士",
-    period: "Expected Dec 2027",
+    school: "Barnard College, Columbia University",
+    degree: "B.A. in Computer Science",
+    period: "Expected May 2028",
     location: "New York, NY",
-    noteEn: "Current — coursework in algorithms, systems, software engineering.",
-    noteZh: "在读 — 算法、系统、软件工程方向。",
+    website: "https://barnard.edu/",
+    logo: "/assets/barnard-logo.png",
+    logoAlt: "Barnard College logo",
+    highlights: [
+      "Dean's List.",
+      "Relevant coursework: Intro to Computer Science / Programming in Java, Data Structures in Java, Discrete Mathematics, Intermediate Microeconomics.",
+    ],
   },
   {
-    schoolEn: "Purdue University",
-    schoolZh: "普渡大学",
-    degreeEn: "Aeronautics and Astronautics Engineering",
-    degreeZh: "航空航天工程",
-    period: "Aug 2024 – May 2025",
+    school: "Purdue University",
+    degree: "Prior study in Aeronautics and Astronautics Engineering",
+    period: "Aug 2024 - May 2025",
     location: "West Lafayette, IN",
-    noteEn: "Transferred to Columbia for CS.",
-    noteZh: "后转入 Columbia 攻读 CS。",
+    website: "https://www.purdue.edu/",
+    logo: "/assets/purdue-logo.png",
+    logoAlt: "Purdue University logo",
+    highlights: [
+      "Dean's List.",
+      "GPA: 3.98 / 4.00.",
+    ],
   },
 ];
 
-export const about = {
-  en: `I'm Chengxi Li, and you can also call me Lédicia. I'm a CS student at Barnard @ Columbia who likes building things, learning languages, and seeing the world from different perspectives.
+export interface CaseStudy {
+  id: string;
+  title: string;
+  subtitle: string;
+  category: string;
+  role: string;
+  summary: string;
+  tools: string[];
+  overview: string;
+  problem: string;
+  solution: string;
+  process: string[];
+  deliverables: string[];
+  impact: string;
+  preview: {
+    kind: "landing" | "spreadsheet" | "dashboard" | "recommender";
+    eyebrow: string;
+    title: string;
+    description: string;
+    image?: string;
+    detailImage?: string;
+  };
+  links: {
+    github?: string;
+    demo?: string;
+    caseStudy?: string;
+    product?: string;
+  };
+}
 
-My interests sit at the intersection of technology and product. I enjoy turning ideas into software and solving real-world problems.`,
-  zh: `我是李成蹊，也可以叫我 Lédicia~ 目前就读于哥伦比亚大学 Barnard College 计算机系。我喜欢做东西、学语言，也喜欢从不同的视角看世界。
+export const caseStudies: CaseStudy[] = [
+  {
+    id: "bite-campus-eats-merchant-dashboard",
+    title: "Bite Campus Eats Admin Portal",
+    subtitle:
+      "Merchant-side product and operations tools for campus food vendors",
+    category: "B2B Product · Operations Dashboard · Campus Growth",
+    role: "Product & Technical Intern",
+    tools: [
+      "React",
+      "Supabase/PostgreSQL",
+      "SQL",
+      "Product Operations",
+      "UI/UX",
+    ],
+    summary:
+      "Supported backend operations and merchant-facing workflows for a campus food ordering platform, including coupons, merchant configuration, menu onboarding, permissions, portal views, and OTP login.",
+    overview:
+      "B2B admin tools that make campus food operations easier to configure, filter, and manage.",
+    problem:
+      "Merchant setup, coupon distribution, and admin roles required repeated manual configuration.",
+    solution:
+      "Turned manual workflows into clearer admin paths for coupons, menus, merchant settings, and access control.",
+    process: [
+      "Mapped coupon, vendor, menu, and role workflows.",
+      "Built dashboard updates with React, Supabase/PostgreSQL, and SQL.",
+      "Refined onboarding, OTP login, portal views, and mobile touchpoints.",
+    ],
+    deliverables: [
+      "Coupon management",
+      "Targeted distribution",
+      "Vendor filtering",
+      "Menu onboarding form",
+      "Role-based portal views",
+      "OTP login flow",
+    ],
+    impact:
+      "Reduced setup friction and made merchant operations easier to scale.",
+    preview: {
+      kind: "dashboard",
+      eyebrow: "Dashboard preview",
+      title: "Merchant workflow",
+      description: "Coupons, vendors, menu onboarding, roles, login, and mobile UI/UX.",
+      image: "/assets/bite-dashboard-ui.png",
+    },
+    links: {
+      demo: "https://dashboard.bitecampuseats.com/admin/coupons",
+    },
+  },
+  {
+    id: "novelmind-recommendation-system",
+    title: "NovelMind Recommendation System",
+    subtitle: "Personalized Chinese web novel recommendation prototype",
+    category: "Data Product · Recommendation System · Hackathon",
+    role: "Product + Data + Engineering",
+    tools: [
+      "Python",
+      "BeautifulSoup",
+      "pandas",
+      "SQLite",
+      "Recommendation Logic",
+    ],
+    summary:
+      "Built a lightweight recommendation prototype for Chinese web novels using scraped metadata, SQLite storage, and preference matching.",
+    overview:
+      "A data-product prototype that turns web novel metadata into searchable recommendations.",
+    problem:
+      "Large catalogs and uneven metadata make it hard for readers to find relevant novels.",
+    solution:
+      "Matched users to novels through cleaned metadata, genre tags, and preference signals.",
+    process: [
+      "Scraped and cleaned metadata with Python, BeautifulSoup, and pandas.",
+      "Stored structured records in SQLite.",
+      "Designed and deployed a preference-matching demo.",
+    ],
+    deliverables: [
+      "Metadata scraper",
+      "SQLite dataset",
+      "Search interface",
+      "Recommendation flow",
+      "Deployed demo",
+    ],
+    impact:
+      "Built a full loop from data collection to an interactive recommendation demo.",
+    preview: {
+      kind: "recommender",
+      eyebrow: "Data product preview",
+      title: "Recommendation flow",
+      description: "Scraping, metadata cleaning, SQLite storage, and preference matching.",
+      image: "/assets/novelmind-main-ui.png",
+      detailImage: "/assets/novelmind-detail-ui.png",
+    },
+    links: {
+      demo: "https://novel-mind.vercel.app/",
+    },
+  },
+  {
+    id: "cuecue-beauty-landing",
+    title: "CueCue Beauty Landing Page",
+    subtitle: "SEO-friendly landing page for nail & lash artists",
+    category: "AI Product · SEO Landing Page · Front-End Prototype",
+    role: "Product Strategy · Front-End Prototype · Growth Experiment",
+    tools: ["HTML/CSS", "SEO", "Prompt Design", "Vibe Coding"],
+    summary:
+      "Designed a vertical landing page that translates CueCue's AI card-generation concept into a clear beauty-provider use case.",
+    overview:
+      "A focused product and growth prototype for nail and lash artists.",
+    problem:
+      "CueCue's AI-card concept needed a concrete vertical use case.",
+    solution:
+      "Created an SEO-friendly, mobile-first landing page with clear positioning and CTAs.",
+    process: [
+      "Mapped discovery-to-booking user intent.",
+      "Converted the scenario into SEO-aware sections and CTAs.",
+      "Prototyped service cards, pricing, studio details, and a mobile mockup.",
+    ],
+    deliverables: [
+      "Hero positioning",
+      "Mobile mockup",
+      "CTA hierarchy",
+      "Use-case cards",
+      "Pricing examples",
+      "Studio info cards",
+    ],
+    impact:
+      "Made the AI-product idea easier to explain, demo, and test.",
+    preview: {
+      kind: "landing",
+      eyebrow: "Landing page preview",
+      title: "Beauty booking page",
+      description: "Hero, trust strip, mobile mockup, services, pricing, and booking CTAs.",
+      image: "/assets/beauty-landing-ui.png",
+    },
+    links: {
+      product: "https://cuecue.im/",
+    },
+  },
+];
 
-我的兴趣在技术与产品的交叉地带——把想法变成可以用的软件，解决一些真实世界里的问题。`,
-};
+export interface ProductResearchItem {
+  id: string;
+  title: string;
+  subtitle: string;
+  category: string;
+  role: string;
+  summary: string;
+  methods: string[];
+  artifacts: string[];
+  examples: string[];
+  insight: string;
+  tools: string[];
+  links: {
+    product?: string;
+  };
+}
+
+export const productResearchItems: ProductResearchItem[] = [
+  {
+    id: "cuecue-ai-card-prompt-system",
+    title: "CueCue AI Card Prompt System",
+    subtitle:
+      "Prompt design and use-case testing for AI-generated mobile-first pages",
+    category: "AI Product Operations · Prompt Design · Product Research",
+    role: "AI Product Operations · Prompt Testing · Scenario Design",
+    summary:
+      "Created and tested structured prompts for AI-generated mobile-first cards across scenarios such as campus matching, event RSVP, roommate finding, housing rental, small business pages, and service booking.",
+    methods: [
+      "User scenario mapping",
+      "Use-case segmentation",
+      "Competitor and category pattern review",
+      "Prompt variant testing",
+      "CTA and form-field quality evaluation",
+      "Product requirement analysis",
+    ],
+    artifacts: [
+      "Scenario matrix",
+      "Prompt templates",
+      "Output evaluation notes",
+      "CTA checklist",
+      "Form-field relevance criteria",
+      "PRD-style requirement notes",
+    ],
+    examples: [
+      "Campus matching",
+      "Event RSVP",
+      "Roommate finding",
+      "Housing rental",
+      "Small business pages",
+      "Service booking",
+    ],
+    insight:
+      "Refined card outputs around CTA clarity, form-field relevance, scenario completeness, and shareability, helping translate broad AI-card concepts into testable product requirements.",
+    tools: ["Prompt Engineering", "SEO/GEO", "Google Ads", "Content Strategy", "User Analysis"],
+    links: {
+      product: "https://cuecue.im/",
+    },
+  },
+];
 
 export interface ExperienceItem {
-  roleEn: string;
-  roleZh: string;
-  orgEn: string;
-  orgZh: string;
-  location: string;
-  period: string;
-  bulletsEn: string[];
-  bulletsZh: string[];
+  type: "internship" | "project";
+  company: string;
+  role: string;
+  focus: string;
+  website?: string;
+  logoText: string;
+  period?: string;
+  highlights: string[];
 }
 
-export const experience: ExperienceItem[] = [
+export const experienceItems: ExperienceItem[] = [
   {
-    roleEn: "Software Engineering Intern",
-    roleZh: "软件工程实习生",
-    orgEn: "Bite Campus Eats",
-    orgZh: "Bite Campus Eats",
-    location: "New York, NY",
-    period: "Feb 2026 – Present",
-    bulletsEn: [
-      "Contributed to mobile app UI/UX by defining core user flows, information architecture, and wireframes for the web-to-mobile transition.",
-      "Developed core Admin Dashboard features: coupon management (creation, bulk generation, multi-dimensional filtering, targeted distribution) with serverless delivery via Supabase Edge Functions.",
-      "Implemented cross-role admin views and optimized OTP-based email auth, improving permission switching, login flow, and usability.",
-      "Helped split the original monorepo into separate GitHub repos (main, dashboard, notification, infra), improving maintainability.",
-    ],
-    bulletsZh: [
-      "参与移动 App 的 UI/UX 设计，梳理核心用户流程、信息架构与线框图，支撑产品从 Web 端向 Mobile 端的过渡。",
-      "迭代 Admin Dashboard 核心功能：优惠券管理（创建、批量生成、多维筛选、定向投放），通过 Supabase Edge Functions 实现 Serverless 发券逻辑。",
-      "实现跨角色管理员视图，优化基于 OTP 的邮箱认证，改进权限切换、登录流与整体可用性。",
-      "参与代码库模块化重构，把原来的主仓库拆分为 main / dashboard / notification / infra 四个独立仓库，提升可维护性与协作效率。",
+    type: "internship",
+    company: "SpringBrand / CueCue",
+    role: "AI Product Operations / Growth / Vibe Coding",
+    website: "https://cuecue.im/",
+    logoText: "CQ",
+    focus:
+      "AI-generated cards, prompt testing, SEO/GEO, overseas growth, landing page prototyping.",
+    highlights: [
+      "Structured prompts and scenario tests for AI-generated mobile-first pages.",
+      "Translated broad product concepts into vertical landing pages and growth experiments.",
+      "Connected content strategy, search intent, and prototype design for early market testing.",
     ],
   },
   {
-    roleEn: "IT Intern",
-    roleZh: "信息科技部实习生",
-    orgEn: "Agricultural Bank of China · Zhengzhou Branch",
-    orgZh: "中国农业银行 · 郑州分行",
-    location: "Zhengzhou, China",
-    period: "Jun 2025 – Aug 2025",
-    bulletsEn: [
-      "Optimized the PDF stamping pipeline (render → canvas → coordinate mapping → write-back), improving accuracy, performance, and exception handling.",
-      "Implemented unified stamping supporting mixed seal + signature; integrated into the car-loan contract workflow and validated via joint debugging.",
-    ],
-    bulletsZh: [
-      "优化 PDF 盖章链路（渲染 → 画布 → 坐标映射 → 回写），提升准确率、性能与异常处理能力。",
-      "实现支持印章 + 签名混合盖章的统一方案，并接入车贷合同流程，与下游联调验证通过。",
+    type: "internship",
+    company: "Bite Campus Eats",
+    role: "Product & Technical Intern",
+    website: "https://www.bitecampuseats.com/",
+    logoText: "B",
+    focus:
+      "Merchant dashboard, coupon management, menu onboarding, OTP login, mobile UI/UX, campus growth.",
+    highlights: [
+      "Supported merchant-facing and internal operation tools for campus food vendors.",
+      "Worked with React, Supabase/PostgreSQL, SQL, and product operations workflows.",
+      "Improved coupon, vendor, onboarding, and role-based portal experiences.",
     ],
   },
   {
-    roleEn: "Undergraduate Research Assistant",
-    roleZh: "本科生研究助理",
-    orgEn: "Industrial Engineering Lab, Purdue University",
-    orgZh: "普渡大学 工业工程实验室",
-    location: "West Lafayette, IN",
-    period: "Mar 2025 – May 2025",
-    bulletsEn: [
-      "Configured VR / EMG experiments and automated log processing in Python, reducing manual data entry time by ~40%.",
-      "Supported experiment setup and data quality checks across 20+ sessions, improving signal reliability by ~15%.",
+    type: "internship",
+    company: "Agricultural Bank of China",
+    role: "IT Intern",
+    website: "https://www.abchina.com.cn/en/",
+    logoText: "ABC",
+    focus:
+      "E-stamping workflow, customer signature and corporate seal upload, car-loan contract module, secure enterprise workflow.",
+    highlights: [
+      "Contributed to secure document workflow improvements for banking operations.",
+      "Worked on e-stamping and upload flows involving signatures, seals, and contract modules.",
+      "Gained exposure to reliability requirements in enterprise financial systems.",
     ],
-    bulletsZh: [
-      "配置 VR / EMG 实验环境，并用 Python 自动化日志处理流程，把人工录入时间减少约 40%。",
-      "参与 20+ 次实验布置与数据质量检查，把信号可靠性提升约 15%。",
+  },
+  {
+    type: "project",
+    company: "NovelMind / Columbia ADI CodeCollab",
+    role: "Hackathon Project",
+    logoText: "NM",
+    focus:
+      "Recommendation system, data scraping, cleaning, SQLite, prototype demo.",
+    highlights: [
+      "Built a lightweight recommendation prototype for Chinese web novels.",
+      "Scraped, cleaned, and structured metadata for preference-based matching.",
+      "Presented a working data-product flow under hackathon constraints.",
     ],
   },
 ];
 
-export interface Project {
-  id: string;
-  titleEn: string;
-  titleZh: string;
-  subtitleEn: string;
-  subtitleZh: string;
-  descEn: string;
-  descZh: string;
-  url?: string;
-  iframable: boolean;
-  comingSoon?: boolean;
-  tags: string[];
+export interface SkillGroup {
+  title: string;
+  items: string[];
 }
 
-export const projects: Project[] = [
+export const skillGroups: SkillGroup[] = [
   {
-    id: "bite-toc",
-    titleEn: "Bite Campus Eats — Web App",
-    titleZh: "Bite Campus Eats — Web 端",
-    subtitleEn: "Consumer-facing (toC)",
-    subtitleZh: "面向用户端（toC）",
-    descEn: "Main consumer web app for campus food ordering. Contributed to UI/UX during the web-to-mobile transition.",
-    descZh: "面向校园用户的点餐 Web 应用主站。在 Web 转 Mobile 过程中参与 UI/UX 设计。",
-    url: "https://bitecampuseats.com/",
-    iframable: false,
-    tags: ["React", "TypeScript", "Supabase"],
+    title: "Product & Growth",
+    items: [
+      "Product strategy",
+      "User scenarios",
+      "Prompt design",
+      "SEO/GEO",
+      "Google Ads basics",
+      "Growth experiments",
+      "Content strategy",
+      "User research",
+    ],
   },
   {
-    id: "bite-admin",
-    titleEn: "Bite — Admin Dashboard",
-    titleZh: "Bite — 管理后台",
-    subtitleEn: "Business-facing (toB)",
-    subtitleZh: "面向商户端（toB）",
-    descEn: "Internal admin portal for coupon management, multi-role views, and serverless coupon delivery via Supabase Edge Functions.",
-    descZh: "内部管理后台，包含优惠券管理、多角色视图，以及基于 Supabase Edge Functions 的 Serverless 发券。",
-    url: "https://dashboard.bitecampuseats.com/admin/coupons",
-    iframable: false,
-    tags: ["React", "Supabase", "Edge Functions"],
+    title: "Technical",
+    items: [
+      "React",
+      "TypeScript",
+      "JavaScript",
+      "Python",
+      "SQL",
+      "Supabase/PostgreSQL",
+      "HTML/CSS",
+      "pandas",
+      "SQLite",
+    ],
   },
   {
-    id: "novelmind",
-    titleEn: "NovelMind — Recommender System",
-    titleZh: "NovelMind — 推荐系统",
-    subtitleEn: "ADI CodeCollab Hackathon",
-    subtitleZh: "ADI CodeCollab 黑客松",
-    descEn: "Personalized recommender for Chinese web novels. Built data pipeline (Python, BeautifulSoup, pandas, SQLite) and a content-based prototype.",
-    descZh: "中文网文个性化推荐系统。负责数据管线（Python、BeautifulSoup、pandas、SQLite）与基于内容的推荐原型。",
-    iframable: false,
-    comingSoon: true,
-    tags: ["Python", "pandas", "SQLite"],
-  },
-  {
-    id: "french-history",
-    titleEn: "History of French in Québec",
-    titleZh: "魁北克法语史",
-    subtitleEn: "Static site (GitHub Pages)",
-    subtitleZh: "静态网站（GitHub Pages）",
-    descEn: "An interactive timeline-style page about the history of the French language in Québec, deployed on GitHub Pages.",
-    descZh: "讲述法语在魁北克演变史的交互式静态页面，部署在 GitHub Pages。",
-    url: "https://liledicia.github.io/Practice-for-Historique-Fran-aise/history.html",
-    iframable: true,
-    tags: ["HTML", "CSS", "JavaScript"],
+    title: "Design & Prototyping",
+    items: [
+      "Tailwind CSS",
+      "Figma/Canva basics",
+      "Responsive UI",
+      "Landing page design",
+      "Information architecture",
+      "Mobile-first design",
+    ],
   },
 ];
 
-export const skills = {
-  groups: [
-    {
-      titleEn: "Languages & Frameworks",
-      titleZh: "语言与框架",
-      items: ["Python", "JavaScript", "TypeScript", "Java", "React", "SQL"],
-    },
-    {
-      titleEn: "Data & Backend",
-      titleZh: "数据与后端",
-      items: ["PostgreSQL", "Supabase", "Edge Functions", "pandas", "BeautifulSoup", "SQLite"],
-    },
-    {
-      titleEn: "Tools",
-      titleZh: "工具",
-      items: ["Git", "GitHub", "Figma", "Vite", "Tailwind"],
-    },
-  ],
-};
-
-export interface LanguageRow {
-  nameEn: string;
-  nameZh: string;
+export interface LanguageItem {
+  name: string;
   level: string;
-  certEn?: string;
-  certZh?: string;
-  pdf?: string;
-  flag: string;
+  strength: string;
+  certificate?: string;
+  certificateUrl?: string;
 }
 
-export const languages: LanguageRow[] = [
+export const languages: LanguageItem[] = [
   {
-    nameEn: "Mandarin",
-    nameZh: "中文",
+    name: "Mandarin Chinese",
     level: "Native",
-    certEn: "Native speaker",
-    certZh: "母语",
-    flag: "🇨🇳",
+    strength: "Native communication across product, business, and technical contexts.",
   },
   {
-    nameEn: "English",
-    nameZh: "英语",
+    name: "English",
     level: "Fluent",
-    certEn: "IELTS 7.5",
-    certZh: "雅思 7.5",
-    pdf: "/assets/ielts.pdf",
-    flag: "🇬🇧",
+    certificate: "IELTS 7.5",
+    certificateUrl: "/assets/ielts.pdf",
+    strength: "IELTS 7.5. Fluent spoken communication for interviews, presentations, and team collaboration.",
   },
   {
-    nameEn: "French",
-    nameZh: "法语",
-    level: "B2",
-    certEn: "TCF B2",
-    certZh: "TCF B2",
-    pdf: "/assets/tcf.pdf",
-    flag: "🇫🇷",
+    name: "French",
+    level: "Fluent",
+    certificate: "TCF B2",
+    certificateUrl: "/assets/tcf.pdf",
+    strength: "TCF B2. Fluent spoken communication and comfortable cross-cultural conversation.",
   },
 ];
 
-export interface TravelCountry {
-  nameEn: string;
-  nameZh: string;
-  iso3: string; // ISO 3166-1 alpha-3, for map matching
-}
-
-export const travel: Record<string, TravelCountry[]> = {
-  Asia: [
-    { nameEn: "Japan",         nameZh: "日本",         iso3: "JPN" },
-    { nameEn: "South Korea",   nameZh: "韩国",         iso3: "KOR" },
-    { nameEn: "Thailand",      nameZh: "泰国",         iso3: "THA" },
-    { nameEn: "Indonesia",     nameZh: "印度尼西亚",   iso3: "IDN" },
-    { nameEn: "United Arab Emirates", nameZh: "阿联酋", iso3: "ARE" },
-  ],
-  Europe: [
-    { nameEn: "Germany",       nameZh: "德国",         iso3: "DEU" },
-    { nameEn: "France",        nameZh: "法国",         iso3: "FRA" },
-    { nameEn: "Italy",         nameZh: "意大利",       iso3: "ITA" },
-    { nameEn: "Switzerland",   nameZh: "瑞士",         iso3: "CHE" },
-    { nameEn: "Austria",       nameZh: "奥地利",       iso3: "AUT" },
-    { nameEn: "Vatican City",  nameZh: "梵蒂冈",       iso3: "VAT" },
-    { nameEn: "Denmark",       nameZh: "丹麦",         iso3: "DNK" },
-    { nameEn: "Sweden",        nameZh: "瑞典",         iso3: "SWE" },
-    { nameEn: "Norway",        nameZh: "挪威",         iso3: "NOR" },
-    { nameEn: "Finland",       nameZh: "芬兰",         iso3: "FIN" },
-  ],
-  "North America": [
-    { nameEn: "United States", nameZh: "美国",         iso3: "USA" },
-    { nameEn: "Canada",        nameZh: "加拿大",       iso3: "CAN" },
-  ],
-  Africa: [
-    { nameEn: "Egypt",         nameZh: "埃及",         iso3: "EGY" },
-    { nameEn: "South Africa",  nameZh: "南非",         iso3: "ZAF" },
-  ],
-  Oceania: [
-    { nameEn: "Australia",     nameZh: "澳大利亚",     iso3: "AUS" },
-  ],
-};
-
-export const continentLabels: Record<string, { en: string; zh: string }> = {
-  Asia: { en: "Asia", zh: "亚洲" },
-  Europe: { en: "Europe", zh: "欧洲" },
-  "North America": { en: "North America", zh: "北美洲" },
-  Africa: { en: "Africa", zh: "非洲" },
-  Oceania: { en: "Oceania", zh: "大洋洲" },
-};
-
-export interface VolunteerItem {
-  titleEn: string;
-  titleZh: string;
-  eventEn: string;
-  eventZh: string;
-  period: string;
-  descEn: string;
-  descZh: string;
-  status: "completed" | "in-progress";
-}
-
-export const volunteer: VolunteerItem[] = [
-  {
-    titleEn: "Volunteer",
-    titleZh: "志愿者",
-    eventEn: "Paris 2024 Summer Olympics",
-    eventZh: "2024 巴黎夏季奥运会",
-    period: "Jul – Aug 2024",
-    descEn: "Served as an on-site volunteer during the Paris 2024 Olympics — supporting visitors, language assistance, and on-the-ground operations.",
-    descZh: "在 2024 年巴黎奥运会担任现场志愿者，负责观众引导、语言协助与现场运营支持。",
-    status: "completed",
-  },
-  {
-    titleEn: "Volunteer (in training)",
-    titleZh: "志愿者（培训中）",
-    eventEn: "FIFA World Cup 2026 (USA / Canada / Mexico)",
-    eventZh: "2026 国际足联世界杯（美国 / 加拿大 / 墨西哥）",
-    period: "2026",
-    descEn: "Selected and currently in training for the 2026 FIFA World Cup volunteer program.",
-    descZh: "已入选并正在参加 2026 年国际足联世界杯志愿者培训。",
-    status: "in-progress",
-  },
-];
-
-export const ui = {
-  en: {
-    explore: "Click a branch to explore",
-    close: "Close",
-    visit: "Visit live",
-    code: "Source",
-    comingSoon: "Coming soon — currently being deployed.",
-    iframeBlocked: "This site can't be embedded directly. Click below to open it in a new tab.",
-    openCert: "Open certificate",
-    countriesCount: "countries & regions",
-    continents: "continents",
-  },
-  zh: {
-    explore: "点击分支展开探索",
-    close: "关闭",
-    visit: "访问网站",
-    code: "源码",
-    comingSoon: "即将上线 — 部署中。",
-    iframeBlocked: "该站点不支持直接嵌入预览，点击下方按钮在新标签页打开。",
-    openCert: "查看证书",
-    countriesCount: "个国家与地区",
-    continents: "大洲",
-  },
-};
+export const about =
+  "I'm Chengxi Li, a Computer Science student at Barnard College, Columbia University. My work sits at the intersection of AI product, growth operations, and front-end prototyping. I enjoy turning ambiguous business ideas into structured user scenarios, testable product flows, and polished digital experiences.";

@@ -7,7 +7,4 @@ export default defineConfig({
     port: 5180,
     strictPort: true,
   },
-  optimizeDeps: {
-    include: ['prop-types', 'react-simple-maps', 'd3-geo'],
-  },
 })

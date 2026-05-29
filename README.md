@@ -1,41 +1,57 @@
-# Portfolio — Chengxi Li (Lédicia)
+# Chengxi Li — Product & Growth Portfolio
 
-Personal portfolio site. Bilingual (EN / 中). Radial-tree layout with click-to-expand panels.
+Professional portfolio for Chengxi Li, positioned around AI product, growth operations, front-end prototyping, and technical projects.
 
 ## Stack
 
-- Vite + React 19 + TypeScript
+- Vite + React + TypeScript
 - Tailwind CSS
-- Framer Motion (animations)
-- react-simple-maps (travel world map)
+- Framer Motion
 
 ## Dev
 
 ```bash
 npm install
-npm run dev      # http://localhost:5180
-npm run build    # production build → dist/
+npm run dev
+npm run build
 ```
+
+## Content Editing
+
+Most portfolio content lives in:
+
+```text
+src/data/content.ts
+```
+
+Update `profile`, `caseStudies`, `experienceItems`, `skillGroups`, and `languages` there to change copy, links, and future case study details.
+
+The resume CTA points to:
+
+```text
+public/assets/chengxi-li-resume.pdf
+```
+
+Replace that file when a new resume is ready.
 
 ## Structure
 
-```
+```text
 src/
-├── App.tsx                   # root, switches desktop tree vs mobile accordion
-├── i18n/context.tsx          # EN/中 language toggle context
-├── data/
-│   ├── branches.ts           # 7 branch nodes config (label, angle, color)
-│   └── content.ts            # all bilingual content (about, exp, projects, …)
+├── App.tsx
+├── data/content.ts
 ├── components/
-│   ├── RadialTree.tsx        # desktop layout: center + branches + SVG lines
-│   ├── CenterNode.tsx        # avatar + name + tagline
-│   ├── BranchNode.tsx        # one branch button
-│   ├── ExpandedPanel.tsx     # click-to-expand modal
-│   ├── MobileAccordion.tsx   # mobile fallback
-│   └── sections/             # content for each branch
-└── index.css                 # tailwind + global styles
+│   ├── Layout.tsx
+│   ├── Hero.tsx
+│   ├── EducationSection.tsx
+│   ├── FeaturedProjects.tsx
+│   ├── ProductResearchSection.tsx
+│   ├── ProjectCard.tsx
+│   ├── WorkPreview.tsx
+│   ├── CaseStudyPanel.tsx
+│   ├── ExperienceTimeline.tsx
+│   ├── SkillsGrid.tsx
+│   ├── AboutSection.tsx
+│   └── ContactCTA.tsx
+└── index.css
 ```
-
-## Deploy
-
-Pushed to `main` → Vercel auto-builds and ships. Preview URLs are generated for every branch.

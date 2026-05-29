@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 120" role="img" aria-labelledby="title desc">
+  <title id="title">Purdue University Logo</title>
+  <desc id="desc">A clean Purdue University wordmark for the portfolio education section.</desc>
+  <rect width="360" height="120" rx="14" fill="#ffffff"/>
+  <path d="M44 24h82c18 0 31 5 40 14 8 8 12 18 12 31 0 14-5 25-14 33-9 8-22 12-39 12H96V91h27c8 0 15-2 19-6s7-9 7-16-2-12-7-16c-5-3-11-5-19-5H75v66H44V24Z" fill="#CEB888"/>
+  <path d="M75 48h48c8 0 14 2 19 5 5 4 7 9 7 16s-2 12-7 16-11 6-19 6H96v23H75V48Z" fill="#000000"/>
+  <text x="198" y="57" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800" letter-spacing="1.2" fill="#111827">PURDUE</text>
+  <text x="200" y="83" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="2.6" fill="#8A6F2A">UNIVERSITY</text>
+</svg>

@@ -4,6 +4,12 @@ export default {
   theme: {
     extend: {
       colors: {
+        cream: "#F7FBFF",
+        linen: "#F1E8DA",
+        ink: "#111827",
+        columbia: "#4C8FD8",
+        navy: "#0B1F3A",
+        burgundy: "#7A1538",
         sky: {
           50: "#f0f9ff",
           100: "#e0f2fe",
@@ -17,25 +23,6 @@ export default {
       fontFamily: {
         sans: ["Inter", "PingFang SC", "Microsoft YaHei", "system-ui", "sans-serif"],
         display: ["'Cormorant Garamond'", "Inter", "serif"],
-      },
-      animation: {
-        "pulse-soft": "pulse-soft 3s ease-in-out infinite",
-        float: "float 6s ease-in-out infinite",
-        shimmer: "shimmer 3s linear infinite",
-      },
-      keyframes: {
-        "pulse-soft": {
-          "0%, 100%": { opacity: "0.5", transform: "scale(1)" },
-          "50%": { opacity: "0.8", transform: "scale(1.05)" },
-        },
-        float: {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-8px)" },
-        },
-        shimmer: {
-          "0%": { backgroundPosition: "-200% center" },
-          "100%": { backgroundPosition: "200% center" },
-        },
       },
     },
   },

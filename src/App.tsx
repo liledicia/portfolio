@@ -1,31 +1,25 @@
-import { useEffect, useState } from "react";
-import { LangProvider } from "./i18n/context";
-import { LangToggle } from "./components/LangToggle";
-import { Desktop } from "./components/Desktop";
-import { Mobile } from "./components/Mobile";
-
-function useIsMobile(breakpoint = 768) {
-  const [isMobile, setIsMobile] = useState(
-    typeof window !== "undefined" ? window.innerWidth < breakpoint : false,
-  );
-  useEffect(() => {
-    const onResize = () => setIsMobile(window.innerWidth < breakpoint);
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, [breakpoint]);
-  return isMobile;
-}
+import { AboutSection } from "./components/AboutSection";
+import { ContactCTA } from "./components/ContactCTA";
+import { EducationSection } from "./components/EducationSection";
+import { ExperienceTimeline } from "./components/ExperienceTimeline";
+import { FeaturedProjects } from "./components/FeaturedProjects";
+import { Hero } from "./components/Hero";
+import { Layout } from "./components/Layout";
+import { ProductResearchSection } from "./components/ProductResearchSection";
+import { SkillsGrid } from "./components/SkillsGrid";
 
 function App() {
-  const isMobile = useIsMobile();
-
   return (
-    <LangProvider>
-      <div className="relative min-h-screen z-10">
-        <LangToggle />
-        {isMobile ? <Mobile /> : <Desktop />}
-      </div>
-    </LangProvider>
+    <Layout>
+      <Hero />
+      <EducationSection />
+      <FeaturedProjects />
+      <ProductResearchSection />
+      <ExperienceTimeline />
+      <SkillsGrid />
+      <AboutSection />
+      <ContactCTA />
+    </Layout>
   );
 }
 
