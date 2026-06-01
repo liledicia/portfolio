@@ -1,71 +1,123 @@
 import { motion } from "framer-motion";
 import { productResearchItems } from "../data/content";
+import type { ProductResearchItem } from "../data/content";
 import { SectionHeader } from "./SectionHeader";
 
-function ResearchArtifactPreview() {
+function PhoneCardPreview({ url }: { url: string }) {
+  return (
+    <motion.a
+      href={url}
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Open the live CueCue card in a new tab"
+      whileHover={{ y: -5 }}
+      transition={{ duration: 0.22 }}
+      className="group relative mx-auto block w-[220px] shrink-0 rounded-[2rem] border border-stone-300 bg-stone-900 p-2 shadow-lg shadow-columbia/10 transition hover:shadow-xl hover:shadow-columbia/20 sm:mx-0"
+    >
+      <motion.span
+        aria-hidden="true"
+        animate={{ y: [0, -5, 0] }}
+        transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+        className="pointer-events-none absolute right-3 top-3 z-20 grid h-6 w-6 place-items-center rounded-full bg-white/90 text-stone-950 shadow"
+      >
+        <svg viewBox="0 0 16 16" aria-hidden="true" className="h-3.5 w-3.5" fill="none">
+          <path
+            d="M5 3h8v8M12.5 3.5 4 12"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="1.7"
+          />
+        </svg>
+      </motion.span>
+      <div className="absolute left-1/2 top-[0.6rem] z-10 h-1.5 w-14 -translate-x-1/2 rounded-full bg-stone-700" />
+      <div className="relative h-[442px] w-[202px] overflow-hidden rounded-[1.5rem] bg-white">
+        <iframe
+          src={url}
+          title="Live CueCue card preview"
+          loading="lazy"
+          tabIndex={-1}
+          className="pointer-events-none absolute left-0 top-0 origin-top-left border-0"
+          style={{ width: "390px", height: "852px", transform: "scale(0.518)" }}
+        />
+        <span className="absolute inset-0" aria-hidden="true" />
+      </div>
+      <p className="mt-2 text-center text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-stone-400 transition group-hover:text-columbia">
+        Live card ↗
+      </p>
+    </motion.a>
+  );
+}
+
+function ScenarioMatrix({
+  rows,
+  total,
+}: {
+  rows: NonNullable<ProductResearchItem["scenarioMatrix"]>;
+  total?: number;
+}) {
+  const more = total ? total - rows.length : 0;
+  return (
+    <div className="flex flex-col overflow-hidden rounded-lg border border-columbia/15 bg-white shadow-sm">
+      <div className="flex items-center justify-between border-b border-stone-200 bg-[#f7fbff] px-4 py-3">
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-columbia">
+          Scenario matrix · beauty vertical
+        </p>
+        <span className="rounded-full bg-burgundy/10 px-2.5 py-1 text-[0.65rem] font-semibold text-burgundy">
+          Real research
+        </span>
+      </div>
+      <div className="divide-y divide-stone-100">
+        {rows.map((row) => (
+          <div
+            key={row.en}
+            className="grid grid-cols-[0.85fr_1fr] gap-3 px-4 py-2.5"
+          >
+            <div>
+              <p className="text-xs font-semibold text-navy">{row.en}</p>
+              <p className="mt-0.5 text-[0.7rem] text-stone-400">{row.zh}</p>
+            </div>
+            <p className="text-[0.72rem] leading-5 text-stone-600">{row.gap}</p>
+          </div>
+        ))}
+      </div>
+      {more > 0 && (
+        <div className="mt-auto border-t border-stone-200 bg-[#f7fbff] px-4 py-2 text-center text-[0.7rem] font-semibold text-stone-500">
+          +{more} more scenarios mapped
+        </div>
+      )}
+    </div>
+  );
+}
+
+function GrowthStats({
+  data,
+}: {
+  data: NonNullable<ProductResearchItem["growthStats"]>;
+}) {
   return (
     <div className="overflow-hidden rounded-lg border border-columbia/15 bg-white shadow-sm">
       <div className="flex items-center justify-between border-b border-stone-200 bg-[#f7fbff] px-4 py-3">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-columbia">
-            Research workspace
-          </p>
-          <p className="mt-1 text-sm font-semibold text-navy">
-            Scenario analysis · Requirement notes
-          </p>
-        </div>
-        <span className="rounded-full bg-burgundy/10 px-3 py-1 text-xs font-semibold text-burgundy">
-          PRD input
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-columbia">
+          {data.label}
+        </p>
+        <span className="rounded-full bg-columbia/10 px-2.5 py-1 text-[0.65rem] font-semibold text-columbia">
+          Live test
         </span>
       </div>
-      <div className="grid gap-4 p-4 lg:grid-cols-[0.9fr_1.1fr]">
-        <div className="rounded-lg border border-stone-200 bg-white p-4">
-          <div className="h-3 w-28 rounded bg-navy/80" />
-          <div className="mt-4 space-y-3">
-            {["User goal", "Pain point", "Decision trigger", "CTA intent"].map(
-              (label, index) => (
-                <div key={label} className="grid grid-cols-[0.55fr_1fr] gap-3">
-                  <span className="text-xs font-semibold text-stone-500">
-                    {label}
-                  </span>
-                  <span
-                    className={
-                      index === 2
-                        ? "h-5 rounded bg-burgundy/15"
-                        : "h-5 rounded bg-columbia/15"
-                    }
-                  />
-                </div>
-              ),
-            )}
+      <div className="grid grid-cols-2 gap-px bg-stone-100 sm:grid-cols-4">
+        {data.metrics.map((metric) => (
+          <div key={metric.label} className="bg-white px-4 py-3">
+            <p className="text-lg font-bold text-navy">{metric.value}</p>
+            <p className="mt-0.5 text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-stone-500">
+              {metric.label}
+            </p>
           </div>
-        </div>
-        <div className="overflow-hidden rounded-lg border border-stone-200">
-          <div className="grid grid-cols-[0.95fr_0.75fr_0.8fr] bg-stone-50 text-xs font-semibold text-navy">
-            <div className="border-r border-stone-200 px-3 py-2">Scenario</div>
-            <div className="border-r border-stone-200 px-3 py-2">Output QA</div>
-            <div className="px-3 py-2">Requirement</div>
-          </div>
-          {["Campus match", "Event RSVP", "Service booking", "Rental page"].map(
-            (row, index) => (
-              <div
-                key={row}
-                className="grid grid-cols-[0.95fr_0.75fr_0.8fr] border-t border-stone-200 text-xs"
-              >
-                <div className="border-r border-stone-200 px-3 py-2 text-stone-700">
-                  {row}
-                </div>
-                <div className="border-r border-stone-200 px-3 py-2">
-                  <span className="rounded bg-columbia/15 px-2 py-1 font-semibold text-columbia">
-                    {index === 1 ? "Revise" : "Clear"}
-                  </span>
-                </div>
-                <div className="px-3 py-2 text-stone-500">tighten CTA</div>
-              </div>
-            ),
-          )}
-        </div>
+        ))}
       </div>
+      <p className="border-t border-stone-200 px-4 py-2.5 text-[0.72rem] leading-5 text-stone-600">
+        {data.note}
+      </p>
     </div>
   );
 }
@@ -100,8 +152,9 @@ export function ProductResearchSection() {
               transition={{ duration: 0.35 }}
               className="rounded-lg border border-columbia/20 bg-white p-5 shadow-sm"
             >
-              <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
-                <div>
+              {/* Header */}
+              <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+                <div className="max-w-2xl">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-columbia">
                     {item.category}
                   </p>
@@ -111,92 +164,115 @@ export function ProductResearchSection() {
                   <p className="mt-2 text-base font-medium text-stone-600">
                     {item.subtitle}
                   </p>
-                  <div className="mt-5 border-l-2 border-columbia/35 pl-4">
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-500">
+                  <div className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
+                    <span className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-400">
                       Role
-                    </p>
-                    <p className="mt-1 text-sm font-semibold text-stone-900">
+                    </span>
+                    <span className="font-semibold text-stone-900">
                       {item.role}
-                    </p>
+                    </span>
                   </div>
-                  <p className="mt-5 text-sm leading-7 text-stone-600">
-                    {item.summary}
-                  </p>
-                  <p className="mt-4 text-sm leading-7 text-stone-700">
-                    {item.insight}
-                  </p>
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {item.tools.map((tool) => (
-                      <span
-                        key={tool}
-                        className="rounded-md bg-stone-100 px-2.5 py-1 text-xs font-medium text-stone-700"
-                      >
-                        {tool}
-                      </span>
-                    ))}
-                  </div>
-                  {item.links.product && (
-                    <a
-                      href={item.links.product}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mt-6 inline-flex rounded-lg border border-stone-300 bg-white px-4 py-2.5 text-sm font-semibold text-stone-950 transition hover:border-stone-400 hover:bg-stone-50"
+                </div>
+                <div className="flex flex-wrap gap-2 md:max-w-[240px] md:justify-end">
+                  {item.tools.map((tool) => (
+                    <span
+                      key={tool}
+                      className="rounded-md bg-stone-100 px-2.5 py-1 text-xs font-medium text-stone-700"
                     >
-                      Product Site
-                    </a>
-                  )}
+                      {tool}
+                    </span>
+                  ))}
                 </div>
+              </div>
 
-                <div className="grid gap-5">
-                  <ResearchArtifactPreview />
-                  <div className="grid gap-4 md:grid-cols-3">
-                    <div className="rounded-lg border border-stone-200 bg-[#f7fbff] p-4">
-                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-columbia">
-                        Methods
+              {/* Narrative evidence */}
+              <div className="mt-10 grid gap-10">
+                {/* 01 · Scenario research */}
+                {item.scenarioMatrix && (
+                  <div className="grid items-start gap-6 lg:grid-cols-[1fr_1.05fr]">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-burgundy">
+                        01 · Scenario research
                       </p>
-                      <div className="mt-3 flex flex-wrap gap-2">
+                      <h4 className="mt-3 text-xl font-semibold text-navy">
+                        Mapped real use cases — and why today's tools fall short
+                      </h4>
+                      <p className="mt-3 text-sm leading-7 text-stone-600">
+                        {item.summary}
+                      </p>
+                      <p className="mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-stone-400">
+                        Approach
+                      </p>
+                      <ul className="mt-3 grid gap-2 sm:grid-cols-2">
                         {item.methods.map((method) => (
-                          <span
+                          <li
                             key={method}
-                            className="rounded-md bg-white px-2.5 py-1 text-xs font-medium text-stone-700 shadow-sm"
+                            className="flex gap-2.5 text-sm leading-6 text-stone-700"
                           >
-                            {method}
-                          </span>
+                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-columbia" />
+                            <span>{method}</span>
+                          </li>
                         ))}
-                      </div>
+                      </ul>
                     </div>
-                    <div className="rounded-lg border border-stone-200 bg-[#f7fbff] p-4">
-                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-columbia">
-                        Artifacts
+                    <ScenarioMatrix
+                      rows={item.scenarioMatrix}
+                      total={item.scenarioMatrixTotal}
+                    />
+                  </div>
+                )}
+
+                {/* 02 · Prompt → card */}
+                {item.cardEmbedUrl && (
+                  <div className="flex flex-col items-center gap-8 border-t border-stone-200 pt-10 sm:flex-row sm:items-center sm:justify-center sm:gap-16">
+                    <PhoneCardPreview url={item.cardEmbedUrl} />
+                    <div className="max-w-md">
+                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-burgundy">
+                        02 · Prompt → card
                       </p>
-                      <div className="mt-3 flex flex-wrap gap-2">
+                      <h4 className="mt-3 text-xl font-semibold text-navy">
+                        Structured prompts that output booking-ready cards
+                      </h4>
+                      <p className="mt-3 text-sm leading-7 text-stone-600">
+                        {item.insight}
+                      </p>
+                      <p className="mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-stone-400">
+                        Deliverables
+                      </p>
+                      <ul className="mt-3 grid gap-2 sm:grid-cols-2">
                         {item.artifacts.map((artifact) => (
-                          <span
+                          <li
                             key={artifact}
-                            className="rounded-md bg-white px-2.5 py-1 text-xs font-medium text-stone-700 shadow-sm"
+                            className="flex gap-2.5 text-sm leading-6 text-stone-700"
                           >
-                            {artifact}
-                          </span>
+                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-columbia" />
+                            <span>{artifact}</span>
+                          </li>
                         ))}
-                      </div>
-                    </div>
-                    <div className="rounded-lg border border-stone-200 bg-[#f7fbff] p-4">
-                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-columbia">
-                        Tested Scenarios
-                      </p>
-                      <div className="mt-3 flex flex-wrap gap-2">
-                        {item.examples.map((example) => (
-                          <span
-                            key={example}
-                            className="rounded-md bg-white px-2.5 py-1 text-xs font-medium text-stone-700 shadow-sm"
-                          >
-                            {example}
-                          </span>
-                        ))}
-                      </div>
+                      </ul>
                     </div>
                   </div>
-                </div>
+                )}
+
+                {/* 03 · Growth validation */}
+                {item.growthStats && (
+                  <div className="grid items-start gap-6 border-t border-stone-200 pt-10 lg:grid-cols-[1fr_1.05fr]">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-burgundy">
+                        03 · Growth validation
+                      </p>
+                      <h4 className="mt-3 text-xl font-semibold text-navy">
+                        Pressure-tested demand with a live paid-search experiment
+                      </h4>
+                      <p className="mt-3 text-sm leading-7 text-stone-600">
+                        Ran a small Google Ads keyword test to check whether the
+                        card concept pulls real booking intent — not just
+                        interest — before scaling the build.
+                      </p>
+                    </div>
+                    <GrowthStats data={item.growthStats} />
+                  </div>
+                )}
               </div>
             </motion.article>
           ))}

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Caveat:wght@500;600;700&family=UnifrakturCook:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Caveat:wght@500;600;700&family=UnifrakturCook:wght@700&family=Great+Vibes&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -27,18 +27,21 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at 82% 12%, rgba(226, 211, 225, 0.52), transparent 28rem),
+    radial-gradient(circle at 82% 12%, rgba(221, 210, 228, 0.5), transparent 28rem),
     radial-gradient(circle at 14% 22%, rgba(190, 211, 228, 0.58), transparent 30rem),
-    radial-gradient(circle at 86% 74%, rgba(220, 229, 211, 0.46), transparent 26rem),
-    radial-gradient(circle at 10% 86%, rgba(241, 232, 218, 0.52), transparent 24rem),
+    radial-gradient(circle at 30% 54%, rgba(214, 205, 226, 0.42), transparent 27rem),
+    radial-gradient(circle at 86% 70%, rgba(219, 226, 211, 0.44), transparent 26rem),
+    radial-gradient(circle at 10% 86%, rgba(238, 228, 215, 0.5), transparent 24rem),
     linear-gradient(
       135deg,
       #e8f1f7 0%,
-      #dfeaf3 32%,
-      #d8e5ef 60%,
-      #ead9de 80%,
-      #e3e7dc 91%,
-      #f2ebe2 100%
+      #e0ebf4 20%,
+      #dbe6f0 36%,
+      #dcdfec 50%,
+      #e1dbe8 64%,
+      #e7dde2 78%,
+      #ece4d9 90%,
+      #f1ebe1 100%
     );
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -121,4 +124,113 @@ a:focus-visible {
   pointer-events: none;
   border: 1px solid rgba(58, 48, 30, 0.28);
   box-shadow: inset 0 0 0 3px rgba(58, 48, 30, 0.06);
+}
+
+/* Calligraphic scrolling masthead */
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Translucent light-blue pearl bar */
+.masthead-marquee {
+  position: relative;
+  background:
+    radial-gradient(130% 180% at 16% -40%, rgba(255, 255, 255, 0.75), transparent 56%),
+    radial-gradient(120% 200% at 84% 140%, rgba(186, 213, 240, 0.55), transparent 60%),
+    linear-gradient(
+      104deg,
+      rgba(228, 240, 251, 0.82) 0%,
+      rgba(205, 226, 246, 0.78) 38%,
+      rgba(234, 242, 251, 0.82) 66%,
+      rgba(212, 231, 248, 0.8) 100%
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -1px 0 rgba(76, 143, 216, 0.14);
+}
+
+.masthead-marquee::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    transparent 32%,
+    rgba(255, 255, 255, 0.18) 46%,
+    rgba(255, 255, 255, 0.55) 50%,
+    rgba(255, 255, 255, 0.18) 54%,
+    transparent 68%
+  );
+  transform: translateX(-120%);
+  animation: masthead-sheen 8.5s ease-in-out infinite;
+}
+
+.masthead-text {
+  background: linear-gradient(
+    180deg,
+    #5b9ade 0%,
+    #3a6ca6 52%,
+    #173a64 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 2px rgba(76, 143, 216, 0.22));
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 42s linear infinite;
+}
+
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+
+.marquee__group {
+  display: flex;
+  align-items: center;
+}
+
+.marquee__item {
+  display: inline-flex;
+  align-items: center;
+}
+
+.marquee__sep {
+  margin: 0 2.6rem;
+  font-size: 0.8rem;
+  color: rgba(76, 143, 216, 0.7);
+  transform: translateY(-0.25em);
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes masthead-sheen {
+  0% {
+    transform: translateX(-120%);
+  }
+  55%,
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track,
+  .masthead-marquee::after {
+    animation: none;
+  }
 }

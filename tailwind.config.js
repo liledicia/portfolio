@@ -25,6 +25,7 @@ export default {
         display: ["'Cormorant Garamond'", "Inter", "serif"],
         hand: ["'Caveat'", "'Segoe Script'", "cursive"],
         masthead: ["'UnifrakturCook'", "'Cormorant Garamond'", "serif"],
+        script: ["'Great Vibes'", "'Caveat'", "cursive"],
       },
     },
   },

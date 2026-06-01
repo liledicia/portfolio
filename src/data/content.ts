@@ -259,6 +259,14 @@ export interface ProductResearchItem {
   links: {
     product?: string;
   };
+  cardEmbedUrl?: string;
+  scenarioMatrix?: { en: string; zh: string; gap: string }[];
+  scenarioMatrixTotal?: number;
+  growthStats?: {
+    label: string;
+    metrics: { label: string; value: string }[];
+    note: string;
+  };
 }
 
 export const productResearchItems: ProductResearchItem[] = [
@@ -300,6 +308,46 @@ export const productResearchItems: ProductResearchItem[] = [
     tools: ["Prompt Engineering", "SEO/GEO", "Google Ads", "Content Strategy", "User Analysis"],
     links: {
       product: "https://cuecue.im/",
+    },
+    cardEmbedUrl:
+      "https://cuecue.cc/card-ra2ffkkx?v=20260522T030528016Z-1ezl5x4p",
+    scenarioMatrix: [
+      {
+        en: "Studio info card",
+        zh: "店铺基本信息卡",
+        gap: "Link-in-bio is just a link list; an official site feels too heavy",
+      },
+      {
+        en: "New client special",
+        zh: "（新客）限时优惠卡",
+        gap: "Booking pages can schedule, but can't sell the offer + urgency",
+      },
+      {
+        en: "Service menu / price list",
+        zh: "服务菜单·价目表卡",
+        gap: "Image menus aren't clickable and capture no booking intent",
+      },
+      {
+        en: "Last-minute openings",
+        zh: "本周空档·临时取消卡",
+        gap: "Stories get lost; confirming a time takes DM back-and-forth",
+      },
+      {
+        en: "Before / after case",
+        zh: "前后对比真实案例卡",
+        gap: "IG posts inspire but offer no direct conversion path",
+      },
+    ],
+    scenarioMatrixTotal: 10,
+    growthStats: {
+      label: "Growth experiment · Google Ads",
+      metrics: [
+        { label: "Impressions", value: "659" },
+        { label: "CTR", value: "5.31%" },
+        { label: "Avg. CPC", value: "$1.59" },
+        { label: "Spend", value: "$55.69" },
+      ],
+      note: 'Top term "nail booking" drove 399 impressions at 2.51% CTR, validating booking-led demand for the cards.',
     },
   },
 ];
