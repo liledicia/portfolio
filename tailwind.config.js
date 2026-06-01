@@ -23,6 +23,8 @@ export default {
       fontFamily: {
         sans: ["Inter", "PingFang SC", "Microsoft YaHei", "system-ui", "sans-serif"],
         display: ["'Cormorant Garamond'", "Inter", "serif"],
+        hand: ["'Caveat'", "'Segoe Script'", "cursive"],
+        masthead: ["'UnifrakturCook'", "'Cormorant Garamond'", "serif"],
       },
     },
   },

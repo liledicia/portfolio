@@ -16,10 +16,10 @@ export const profile = {
     { label: "CN", display: "19803861212", href: "tel:+8619803861212" },
   ],
   github: "https://github.com/liledicia",
-  resumeUrl: "/assets/chengxi-li-resume.pdf",
+  linkedin: "https://www.linkedin.com/in/lédicia-li-152946327",
   resumes: [
-    { label: "Chinese Version", href: "" },
-    { label: "English Version", href: "" },
+    { label: "Chinese Version", href: "/assets/chengxi-li-resume-zh.pdf" },
+    { label: "English Version", href: "/assets/chengxi-li-resume-en.pdf" },
   ],
   location: "New York, NY",
 };
@@ -305,12 +305,15 @@ export const productResearchItems: ProductResearchItem[] = [
 ];
 
 export interface ExperienceItem {
-  type: "internship" | "project";
+  type: "internship" | "campus";
   company: string;
   role: string;
   focus: string;
   website?: string;
   logoText: string;
+  logo?: string;
+  logoAlt?: string;
+  logoFit?: "cover" | "contain";
   period?: string;
   highlights: string[];
 }
@@ -322,6 +325,8 @@ export const experienceItems: ExperienceItem[] = [
     role: "AI Product Operations / Growth / Vibe Coding",
     website: "https://cuecue.im/",
     logoText: "CQ",
+    logo: "/assets/cuecue-logo.png",
+    logoAlt: "CueCue logo",
     focus:
       "AI-generated cards, prompt testing, SEO/GEO, overseas growth, landing page prototyping.",
     highlights: [
@@ -336,6 +341,8 @@ export const experienceItems: ExperienceItem[] = [
     role: "Product & Technical Intern",
     website: "https://www.bitecampuseats.com/",
     logoText: "B",
+    logo: "/assets/bite-logo.png",
+    logoAlt: "Bite Campus Eats logo",
     focus:
       "Merchant dashboard, coupon management, menu onboarding, OTP login, mobile UI/UX, campus growth.",
     highlights: [
@@ -350,6 +357,8 @@ export const experienceItems: ExperienceItem[] = [
     role: "IT Intern",
     website: "https://www.abchina.com.cn/en/",
     logoText: "ABC",
+    logo: "/assets/abc-logo.png",
+    logoAlt: "Agricultural Bank of China logo",
     focus:
       "E-stamping workflow, customer signature and corporate seal upload, car-loan contract module, secure enterprise workflow.",
     highlights: [
@@ -359,16 +368,19 @@ export const experienceItems: ExperienceItem[] = [
     ],
   },
   {
-    type: "project",
-    company: "NovelMind / Columbia ADI CodeCollab",
-    role: "Hackathon Project",
-    logoText: "NM",
+    type: "campus",
+    company: "Global China Connection, Columbia University",
+    role: "Organizational Committee Member · Internal & External Department",
+    website: "https://www.linkedin.com/company/gccglobal/",
+    logoText: "GCC",
+    logo: "/assets/gcc-logo.png",
+    logoAlt: "Global China Connection logo",
+    logoFit: "cover",
     focus:
-      "Recommendation system, data scraping, cleaning, SQLite, prototype demo.",
+      "Sponsorship outreach, external communication, and partner coordination for large campus events.",
     highlights: [
-      "Built a lightweight recommendation prototype for Chinese web novels.",
-      "Scraped, cleaned, and structured metadata for preference-based matching.",
-      "Presented a working data-product flow under hackathon constraints.",
+      "Led sponsorship outreach and external communication for the chapter.",
+      "Coordinated 20+ New York restaurant partners for large campus events including Winter Formal and the Chinese New Year Gala.",
     ],
   },
 ];

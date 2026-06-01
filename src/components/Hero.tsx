@@ -11,7 +11,7 @@ const fadeUp = {
 type ContactPanel = "resume" | "email" | "tel" | null;
 
 const buttonBase =
-  "inline-flex min-h-12 items-center justify-center rounded-full border px-5 py-3 text-sm font-semibold shadow-sm transition focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-columbia/30";
+  "inline-flex min-h-12 items-center justify-center whitespace-nowrap rounded-full border px-4 py-3 text-sm font-semibold shadow-sm transition focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-columbia/30";
 
 function preventPlaceholderLink(event: MouseEvent<HTMLAnchorElement>) {
   event.preventDefault();
@@ -65,7 +65,7 @@ export function Hero() {
 
         <motion.div
           variants={fadeUp}
-          className="mt-8 flex flex-wrap items-center gap-3"
+          className="mt-8 flex items-center gap-2 overflow-x-auto sm:gap-2.5"
         >
           <motion.button
             type="button"
@@ -87,6 +87,18 @@ export function Hero() {
           >
             GitHub
           </motion.a>
+          {profile.linkedin && (
+            <motion.a
+              href={profile.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              whileHover={{ y: -4 }}
+              whileTap={{ scale: 0.98 }}
+              className={`${buttonBase} border-columbia/25 bg-[#dfeaf4] text-navy hover:border-columbia/45 hover:bg-[#d3e2f0]`}
+            >
+              LinkedIn
+            </motion.a>
+          )}
           <motion.button
             type="button"
             whileHover={{ y: -4 }}

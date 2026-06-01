@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import { profile } from "../data/content";
 
+const linkBase =
+  "rounded-lg border border-stone-300 bg-white px-5 py-3 text-sm font-semibold text-stone-950 transition hover:border-stone-400 hover:bg-stone-50";
+
 export function ContactCTA() {
   return (
     <section id="contact" className="px-5 py-16 sm:px-6 lg:py-20">
@@ -27,12 +30,11 @@ export function ContactCTA() {
               <a href={`mailto:${profile.email}`} className="hover:text-burgundy">
                 Email: {profile.email}
               </a>
-              <a href="tel:+15743012457" className="hover:text-burgundy">
-                US Phone: {profile.phoneUS}
-              </a>
-              <a href="tel:+8619803861212" className="hover:text-burgundy">
-                China Phone: {profile.phoneChina}
-              </a>
+              {profile.phones.map((phone) => (
+                <a key={phone.label} href={phone.href} className="hover:text-burgundy">
+                  {phone.label} Phone: {phone.display}
+                </a>
+              ))}
             </div>
           </div>
 
@@ -43,23 +45,26 @@ export function ContactCTA() {
             >
               Email
             </a>
-            <a
-              href="tel:+15743012457"
-              className="rounded-lg border border-stone-300 bg-white px-5 py-3 text-sm font-semibold text-stone-950 transition hover:border-stone-400 hover:bg-stone-50"
-            >
-              Call US
-            </a>
-            <a
-              href="tel:+8619803861212"
-              className="rounded-lg border border-stone-300 bg-white px-5 py-3 text-sm font-semibold text-stone-950 transition hover:border-stone-400 hover:bg-stone-50"
-            >
-              Call China
-            </a>
+            {profile.phones.map((phone) => (
+              <a key={phone.label} href={phone.href} className={linkBase}>
+                Call {phone.label}
+              </a>
+            ))}
+            {profile.linkedin && (
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className={linkBase}
+              >
+                LinkedIn
+              </a>
+            )}
             <a
               href={profile.github}
               target="_blank"
               rel="noreferrer"
-              className="rounded-lg border border-stone-300 bg-white px-5 py-3 text-sm font-semibold text-stone-950 transition hover:border-stone-400 hover:bg-stone-50"
+              className={linkBase}
             >
               GitHub
             </a>
@@ -70,9 +75,19 @@ export function ContactCTA() {
       <footer className="mx-auto max-w-6xl px-1 pt-8 text-sm text-stone-500">
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} {profile.name}</p>
-          <a href={`mailto:${profile.email}`} className="hover:text-stone-900">
-            {profile.email}
-          </a>
+          <div className="flex items-center gap-4">
+            {profile.linkedin && (
+              <a href={profile.linkedin} target="_blank" rel="noreferrer" className="hover:text-stone-900">
+                LinkedIn
+              </a>
+            )}
+            <a href={profile.github} target="_blank" rel="noreferrer" className="hover:text-stone-900">
+              GitHub
+            </a>
+            <a href={`mailto:${profile.email}`} className="hover:text-stone-900">
+              {profile.email}
+            </a>
+          </div>
         </div>
       </footer>
     </section>
